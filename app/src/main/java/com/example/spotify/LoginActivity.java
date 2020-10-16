@@ -1,8 +1,10 @@
 package com.example.spotify;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -27,8 +29,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getSupportActionBar().setElevation(0);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Toolbar toolbar = findViewById(R.id.Toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            }
+        });
 
         email=findViewById(R.id.mail_edit_text);
         password=findViewById(R.id.password_edit_text);
@@ -43,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     show=false;
                     eyeToggle.setImageResource(R.drawable.ic_baseline_visibility_off_24);
-                   password.setTransformationMethod(new PasswordTransformationMethod());
+                    password.setTransformationMethod(new PasswordTransformationMethod());
                 }
                 else
                 {
@@ -138,15 +149,23 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "Logging", Toast.LENGTH_SHORT).show();
+                if (login.isEnabled()) {
+                    Toast.makeText(LoginActivity.this, "Logging into your account", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         loginWithoutPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "Login Without password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Login Without password is clicked", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

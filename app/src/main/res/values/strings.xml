@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Spotify</string>
+    <string name="log_in_without_password">Log in without password</string>
+    <string name="log_in">LOG IN</string>
+    <string name="or">OR</string>
+    <string name="sign_up_free">Sign up free</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email_or_username">Email or username</string>
 </resources>

@@ -7,6 +7,13 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".LoginActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"/>
+
     <TextView
         android:id="@+id/mail_text"
         android:layout_width="wrap_content"
@@ -14,7 +21,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Email or username"
+        android:layout_below="@+id/Toolbar"
+        android:text="@string/email_or_username"
         android:textColor="@color/colorAccent"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -26,8 +34,11 @@
         android:layout_below="@id/mail_text"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:autofillHints="@string/email_or_username"
+        android:inputType="textEmailAddress|textPersonName"
         android:background="@drawable/edit_text_bg"
         android:padding="10dp"
+        android:labelFor="@id/mail_edit_text"
         android:textColor="@color/colorAccent" />
 
     <TextView
@@ -38,7 +49,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Password"
+        android:text="@string/password"
         android:textColor="@color/colorAccent"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -57,7 +68,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_bg"
             android:padding="10dp"
-            android:textColor="@color/colorAccent" />
+            android:labelFor="@id/password_edit_text"
+            android:autofillHints="@string/password"
+            android:textColor="@color/colorAccent"/>
 
         <ImageButton
             android:id="@+id/password_toggle"
@@ -67,7 +80,8 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_visibility_24" />
+            android:src="@drawable/ic_baseline_visibility_24"
+            android:contentDescription="@string/password" />
 
 
     </RelativeLayout>
@@ -82,10 +96,11 @@
         android:background="@drawable/btn_bg"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
-        android:text="Login"
+        android:text="@string/login"
+        android:enabled="false"
+        android:textStyle="bold"
         android:textColor="@color/grey"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/login_without_password"
@@ -96,13 +111,12 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/password_btn_bg"
         android:letterSpacing="0.1"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:enabled="false"
+        android:paddingStart="27dp"
+        android:paddingEnd="27dp"
         android:clickable="false"
-        android:text="Login without password"
+        android:text="@string/log_in_without_password"
         android:textColor="@color/colorAccent"
-        android:textSize="12dp" />
+        android:textSize="12sp" />
 
 
 </RelativeLayout>
